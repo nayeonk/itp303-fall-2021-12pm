@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            /* This CSS rule gets rid of extraneous margins that come with the browser */
+            html, body {
+                margin:0;
+                padding: 0;
+            }
+            /* CSS Comments */
+            h1 {
+                color: blue;
+                background-color: yellow;
+                font-size: 50px;
+                margin: 0;
+            }
+            /* ALL h2 tags will follow the below CSS rule */
+            h2 {
+                color: green;
+            }
+            img {
+                width: 100px;
+            }
+            /* a CSS rule for ID */
+            #image1 {
+                width: 300px;
+            }
+            #image2 {
+                width: 200px;
+            }
+            /* a CSS rule for class */
+            .blue-text {
+              color: blue;  
+            }
+            #header {
+                background-color: yellow;
+                /* Center all the text INSIDE this #header div */
+                text-align:center;
+            }
+            #biology {
+                background-color: pink;
+                /* padding creates white space INSIDE a div */
+                padding-left: 15px;
+                padding-bottom: 10px;
+                padding-top: 10px;
+
+                /* margin creates white space OUTSIDE the div*/
+                margin-left: 50px;
+
+                border-style: solid;
+                border-color: black;
+                border-width: 2px;
+            }
+            #facts {
+                background-color: skyblue;
+                width: 500px;
+                /* Center this entire div */
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Use <div> to create sections, to group similar elements together -->
+        <div id="header" >
+            <h1>All About Pikachu</h1>
+        </div>
+
+        <div id="biology">
+            <h2>Biology</h2>
+
+            <!-- Two ways to add images -->
+            <!-- 1. Using an absolute path, aka a URL to the image that already exists -->
+            <img id="image1" src="https://static.wikia.nocookie.net/wii/images/8/89/Pikachu.jpg/revision/latest?cb=20140209205851" alt="Image of a pikachu"/>
+            <!-- 2. Use an image that exists on your machine. The src is where the file exists in relation to this HTML file -->
+            <img id="image2" src="images/pikachu.jpeg" alt="Image of a pikachu in handcuffs"/>
+            <p>Pikachu is a short, chubby rodent <strong>Pokémon</strong>. It is covered in yellow fur with two horizontal brown stripes on its back. It has a small mouth, long, pointed ears with black tips, brown eyes, and the two red circles on its cheeks contain pouches for electricity storage. It has short forearms with five fingers on each paw, and its feet each have three toes. At the base of its lightning bolt-shaped tail is a patch of brown fur. A female will have a V-shaped notch at the end of its tail, which looks like the top of a heart. It is classified as quadruped, but it has been known to stand and walk on its hind legs.</p>
+            <p>The anime has shown that wild Pikachu live in groups in forested areas. Pikachu communicates amongst themselves using squeaks and tail-shaking as friendly gestures. Electricity can be used to receive and send messages with each other, as well as other Electric Pokémon species. It raises its tail to check its surroundings and is occasionally struck by lightning in this position. When groups grow, they can inadvertently cause lightning storms. Pikachu is found foraging for berries it roasts with electricity to make them tender enough to eat. A sure sign that Pikachu inhabits a location is patches of burnt grass. It has been observed eating and sometimes destroying telephone poles, wires, and other electronic equipment.</p>
+        </div> <!-- end of #biology div-->
+
+        <div id="facts">
+            <h2 class="blue-text">Facts</h2>
+            <ul>
+                <li>Electric type</li>
+                <li>Is yellow</li>
+                <li>Has a tail shaped as a thunder bolt</li>
+            </ul> 
+        </div>
+        
+        <h2 class="blue-text">Contact us</h2>
+        <a href="https://google.com" target="_blank">Click me!</a>
+    </body>
+</html>
