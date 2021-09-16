@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<style>
+		form {
+			width: 500px;
+		}
+		.form-row {
+			margin-bottom: 10px;
+			display: flex;
+		}
+		label {
+			padding-right: 10px;
+			width: 60px;
+		}
+		input {
+			width: 150px;
+			height: 20px;
+		}
+		.error {
+			color: red;
+			font-style: italic;
+			margin-left: 10px;
+			visibility: hidden;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="text">Form</h1>
+
+	<form id="form" method="" action="">
+
+		<div class="form-row">
+			<label for="name-input">Name: </label>
+			<input type="text" id="name-input" name="name-input" placeholder="Tommy Trojan" />
+			<div class="error">Error message</div>
+		</div>
+
+		<div class="form-row">
+			<label for="age-input">Age: </label>
+			<input type="text" id="age-input" name="age-input"/> 
+			<div class="error">Error message</div>
+		</div>
+
+		<div class="form-row">
+			<button type="submit" id="go-button">Go</button>
+		</div>
+
+	</form>
+
+	<script>
+
+		// Other common JS events - keypress
+		// document.onkeydown = function() {
+		// 	console.log("keydown");
+		// }
+		// document.onkeyup = function() {
+		// 	console.log("keyup");
+		// }
+		// keypress doesn't work with arrow, control, alt, etc. only for "typing text"
+		document.onkeypress = function(event) {
+			//console.log("keypress");
+			// Every time onkeypress event is triggered, it gets passed an event object that tells us more about the event that was just triggered
+			//console.log(event);
+			//console.log(event.key);
+
+			// Can display what user typed onto the browser by grabbing an element from the DOM and adding test to it.
+			//document.querySelector("#text").innerHTML += event.key;
+
+			// if(event.key == "F") {
+			// 	alert("F is not allowed!");
+			// }
+		}
+
+		document.onscroll = function() {
+
+		}
+
+		// ---- Primitive Data types in JS
+		let number = 7;
+
+		// This is legal in JS
+		console.log(7 + 1.1);
+		
+		// Add a number and a string? will concatenate as a string
+		console.log(1 + "7");
+
+		// Arithmetic in JS
+		console.log(12 - 7);
+		console.log(5 * 5);
+		// In Java or C++ 1/5 would equal to 0 but JS evaluates to 0.2
+		console.log(1 / 5);
+
+		// JS also has 3 special floating numbers: Infinity, -Infinity, and NaN (not a number)
+		console.log(0 / "hi");
+		console.log(1 / 0);
+		console.log(-1 / 0);
+
+		// Can easily convert string to number
+		let number2 = "1000";
+		console.log(number2);
+
+		let number2converted = parseInt(number2);
+		console.log(number2converted);
+
+		// also parseFloat() to convert string to floating point
+
+		// Math library integrated in JS 
+		console.log(Math.PI);
+		console.log(Math.ceil(1.1));
+		console.log(Math.floor(1.9));
+		console.log(Math.round(1.4));
+
+		// ---- STRINGSSSS
+		let firstName = "nayeon";
+		let lastName = "kim";
+
+		// strings are an array of characters
+
+		console.log( firstName[0] );
+		console.log( firstName[1] );
+		console.log( firstName.length );
+		console.log( firstName.charAt(1) );
+		// indexOf returns the first matching index of where "n" is located
+		console.log( firstName.indexOf("n") );
+		console.log( firstName.lastIndexOf("n") );
+		console.log( firstName.toUpperCase() );
+
+
+		// ---- Form events
+		// Three form events
+		// 1. onchange - this event triggers when user clicks out of the selected element
+		document.querySelector("#name-input").onchange = function() {
+			console.log("onchange event!!");
+		}
+
+		// 2. oninput - this event triggers when a user types something into the selected element
+		document.querySelector("#name-input").oninput = function() {
+			console.log("oninput event!");
+		}
+
+		// 3. onsubmit - this event triggers when an entire form is submitted (typically occurs when the "submit" button on the form is clicked on)
+		document.querySelector("#form").onsubmit = function(event) {
+			// We don't want the form to actually be submitted yet. Going to prevent the form from being submitted first to check the input validation.
+			// preventDefault prevents the default event to occur. The default event for onsubmit is to submit the form. We want to prevent that.
+			event.preventDefault();
+
+			console.log("form is submitted!");
+
+			// -- Check if name input is empty
+			// 1. Grab the user's input 
+			// .trim() removes any leading and trailing whitespaces
+			let firstnameInput = document.querySelector("#name-input").value.trim();
+
+			console.log(firstnameInput);
+
+			if( firstnameInput.length <= 0) {
+				console.log("name input is empty!");
+				document.querySelector("#name-input").nextElementSibling.innerHTML = "Name cannot be empty";
+
+				// Show the error message
+				document.querySelector("#name-input").nextElementSibling.style.visibility = "visible";
+			}
+			else {
+				// Hide the error message
+				document.querySelector("#name-input").nextElementSibling.style.visibility = "hidden";
+			}
+
+			// one way you can prevent the form from being submitted
+			//return false;
+		}
+
+		// Can't we just add an onclick event on the button??
+		document.querySelector("#go-button").onclick = function() {
+			// This will work somewhat BUT one of the main reasons why we use onsubmit instead is so that we can also capture when users use the "enter" button on their keyboard to submit their form.
+		}
+
+
+	</script>
+
+</body>
+</html>
