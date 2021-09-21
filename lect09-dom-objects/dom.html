@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<title>Creating Elements</title>
+
+	<style>
+		.red {
+			color: red;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<h1 class="my-4">Create elements dynamically </h1>
+
+		<form class="row row-cols-md-auto g-3" id="simple-form">
+			<div class="col-12">
+				<input type="text" class="form-control" id="textInput" placeholder="Add some text" />
+			</div>
+
+			<div class="col-12">
+				<button type="submit" class="btn btn-primary">Add</button>
+				<button type="button" class="btn btn-success" id="btn-string">Add using string</button>
+				<button type="button" class="btn btn-danger" id="btn-delete">Delete All</button>
+			</div>
+		</form>
+
+
+		<div class="row">
+			<div class="col-12 mt-4">
+				<div id="paragraphs-container">
+					<p class="red">I am a paragraph</p>
+					<p class="red">I am a second paragraph</p>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+<script>
+document.querySelector("#simple-form").onsubmit = function(event) {
+	event.preventDefault();
+
+	// Grab what the user typed in
+	let userInput = document.querySelector("#textInput").value.trim();
+
+	console.log(userInput);
+
+	// Quick validation to make sure user has typed something in
+	if( userInput.length > 0 ) {
+		// If user has actually typed something, create a <p> element
+
+		// Create a <p> element
+		let pElement = document.createElement("p");
+
+		// Add what the user typed in as text 
+		pElement.textContent = userInput;
+		pElement.classList.add("red");
+		pElement.id = "hi";
+		console.log(pElement);
+		
+		// Display the newly created <p> element on the browser by appending it to an existing element
+		document.querySelector("#paragraphs-container").appendChild(pElement);
+			
+		// Clear the user input
+		document.querySelector("#textInput").value = "";
+	}
+}
+
+document.querySelector("#btn-string").onclick = function() {
+
+	let userInput = document.querySelector("#textInput").value.trim();
+
+	if( userInput.length > 0 ) {
+		// Create a <p> element but this time, use a string instead of .createElement()
+		
+		let color = "red";
+		// Can insert variables within ${} when using backticks to create a string
+		let htmlString = `<p class="red">${userInput}</p>`;
+
+		// Can use interpolation for attribute values as well
+		// let htmlString = `<p class="${color}">${userInput}</p>`;
+
+		document.querySelector("#paragraphs-container").innerHTML += htmlString;
+
+		// Can use .append because append takes strings but the html element will not get rendered
+		/// Cannot use .appendChild because .appendChild only accepts dom nodes and not strings
+		// document.querySelector("#paragraphs-container").appendChild(htmlString);
+
+		// To add a class name, can't do this
+		// htmlString.classList.add("red");
+		// Can do something like this to add a class too
+		// document.querySelector("#paragraphs-container p").classList.add("red");
+
+
+	}
+
+}
+
+// DELETEEE
+document.querySelector("#btn-delete").onclick = function() {
+	// Grab the parent of everything we want to delete
+	let paragaphs = document.querySelector("#paragraphs-container");
+
+	// Can do this to delete as well but the while loop performance is a little better
+	//paragaphs.innerHTML = "";
+
+	// .hasChildNodes() - this method returns TRUE or FALSE and lets us know whether or not an element has any children
+	while( paragaphs.hasChildNodes() ) {
+		// As long as #paragaphs-container has children run the following code:
+		paragraphs.removeChild(paragraphs.lastChild);
+	}
+}
+
+
+</script>
+	
+</body>
+</html>

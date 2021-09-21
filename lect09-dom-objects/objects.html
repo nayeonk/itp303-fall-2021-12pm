@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JS Objects</title>
+	<style>
+		#people-list, #people-list-with-string {
+			border: 1px solid black;
+			margin-bottom: 20px;
+		}
+	</style>
+	
+</head>
+<body>
+	<h1>Show All People</h1>
+	<div id="people-list">
+	</div>
+	<div id="people-list-with-string">
+	</div>
+
+	<script>
+		// Objects in JS
+
+		// Two most common ways to create an object in JS
+
+		// 1. Literal syntax - can create an object on the fly
+		let person1 = {
+			// objects have a property and value
+			// property: value
+			name: "Michael Scott",
+			favColor: null,
+			age: 44,
+			positions: ["Sales Rep", "Regional Manager", "CEO"],
+			phone: {
+				cell: "123-123-1234",
+				work: "555-555-5555"
+			},
+			greet: function() {
+				console.log("hi " + this.name);
+			}
+		};
+
+		console.log(person1);
+
+		// Can easily access any values of this object's properties using dot notation
+		console.log(person1.name);
+		console.log(person1.age);
+		console.log(person1.positions[0]);
+		console.log(person1.phone.cell);
+
+		// Can call an object's methods
+		person1.greet();
+
+		// If a property does not exist, will return undefined
+		console.log(person1.favColor);
+
+		// Can use the bracket notation to grab an object's property's value
+		console.log(person1["name"]);
+
+
+		// Second way to create objects in JS -- using the Constructor Function syntax
+
+		// Declare the function (reminds you of a class)
+		function Person(fullName, age) {
+			this.name = fullName;
+			this.age = age;
+		}
+
+		// Create instances of this 'function'
+		let jim = new Person("Jim Halpbert", 35);
+		let pam = new Person("Pam Beesley", 31);
+
+		console.log(jim);
+
+
+		// When working with a lot of objects and you want to store them altogether for easy access, you can use arrays!!!
+
+		let peopleList = [];
+		// Adding three objects into peopleList array
+		peopleList.push(person1, jim, pam);
+
+		console.log("--- LIST STARTS HERE");
+		console.log(peopleList);
+
+		// Grab Michael's information from the array
+		console.log( peopleList[0].name );
+
+
+		// Display all the people's information to the browser
+
+		// Iterate through the peopleList array
+		for( let i = 0; i < peopleList.length; i++) {
+			// Create a <p> tag for each person
+			let pElement = document.createElement("p");
+			pElement.textContent = peopleList[i].name + " - " + peopleList[i].age;
+			console.log(pElement);
+			
+			// Add newly created <p> to existing #people-list div
+			document.querySelector("#people-list").appendChild(pElement);
+		}
+
+		// Create <p> element using STRING instead of .createElement()
+		for( let i = 0; i < peopleList.length; i++) {
+			let htmlString = `
+				<p>${peopleList[i].name} - ${peopleList[i].age}</p>
+			`;
+
+			// Append
+			document.querySelector("#people-list-with-string").innerHTML += htmlString;
+		}
+
+	</script>
+</body>
+</html>
