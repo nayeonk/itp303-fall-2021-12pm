@@ -81,7 +81,7 @@ document.querySelector("#btn-string").onclick = function() {
 		
 		let color = "red";
 		// Can insert variables within ${} when using backticks to create a string
-		let htmlString = `<p class="red">${userInput}</p>`;
+		let htmlString = `<p>${userInput}</p>`;
 
 		// Can use interpolation for attribute values as well
 		// let htmlString = `<p class="${color}">${userInput}</p>`;
@@ -95,7 +95,7 @@ document.querySelector("#btn-string").onclick = function() {
 		// To add a class name, can't do this
 		// htmlString.classList.add("red");
 		// Can do something like this to add a class too
-		// document.querySelector("#paragraphs-container p").classList.add("red");
+		document.querySelector("#paragraphs-container p").classList.add("red");
 
 
 	}
