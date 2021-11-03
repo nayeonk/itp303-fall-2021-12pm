@@ -38,17 +38,34 @@ else {
 	else {
 		$album_id = "null";
 	}
+	if(isset($_POST["composer"]) && !empty($_POST["composer"])) {
+		$composer = "'" . $_POST["composer"] . "'";
+	}
+	else {
+		$composer = "null";
+	}
+	if(isset($_POST["bytes"]) && !empty($_POST["bytes"])) {
+		$bytes = $_POST["bytes"];
+	}
+	else {
+		$bytes = "null";
+	}
+
+	// NOT COVERED IN CLASS but good to know.
+	// Sanitize user input for track
+	// real_escape_string() takes care of special characters like ',; so that it doesn't affect the SQL statement. It adds escape characters to the special characters
+	$track_name = $mysqli->real_escape_string($_POST["track_name"]);
 	
 	// sql statement
 	$sql = "INSERT INTO tracks(name, media_type_id, genre_id, milliseconds, unit_price, album_id, composer, bytes)
-	VALUES('" . $_POST["track_name"] ."',"
+	VALUES('" . $track_name ."',"
 	. $_POST["media_type"] . ","
 	. $_POST["genre"] . ","
 	. $_POST["milliseconds"] . ","
 	. $_POST["price"] . ","
 	. $album_id . ","
-	. "'" . $_POST["composer"] . "'" . ","
-	. $_POST["bytes"] . ");";
+	. $composer . ","
+	. $bytes . ");";
 
 	// REally important to check that sql statement looks correct
 	echo "<hr>" . $sql . "<hr>";
