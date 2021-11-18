@@ -1,8 +1,8 @@
 <?php
-session_start();
-
 require '../config/config.php';
+// If the user is logged in, we want to redirect the user out of this page (aka kick them out). If they are logged in, they don't see the log in page
 
+if( !isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"]) {
 	// Check if this page has username and password passed to it via POST (aka user is trying to login)
 	if ( isset($_POST['username']) && isset($_POST['password']) ) {
 		// Validation - make sure user has entered username AND password
@@ -47,6 +47,12 @@ require '../config/config.php';
 			}
 		} 
 	}
+}
+else {
+	// Will get to this code if you are logged in
+	// Redirect them to the home page
+	header("Location: ../song-db/index.php");
+}
 ?>
 <!DOCTYPE html>
 <html>

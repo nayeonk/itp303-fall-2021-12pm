@@ -1,4 +1,5 @@
 <?php
+session_start(); // Most pages need to use sessionss AND they need the db credentials
 
 define('DB_HOST', '303.itpwebdev.com');
 define('DB_USER', 'nayeon_db_user');
