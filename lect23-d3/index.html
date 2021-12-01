@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 Intro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        line    {stroke:#ddd;shape-rendering: crispEdges;}
+        text    {text-anchor:middle;}
+        circle {fill:orange;stroke:orange;fill-opacity:0.5;}
+        .axis line {fill:none;stroke:#ddd;shape-rendering: crispEdges;}
+        .axis path  {fill:none;}
+        .axis text {font-size:0.7em;fill:#555;font-family:sans-serif}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <span class="navbar-brand mx-auto mb-0 h1">D3 Introduction</span>
+        </div>
+      </nav>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Learn About D3</h1>
+            <p class="col-md-8 fs-4">Using a series of examples, we'll see how to leverage the power of D3 to accomplish goals that would be likely unachievable for individual developers.</p>
+        </div>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row">
+            
+        </div>
+        <div class="row m-4">
+            <div class="col text-center">
+                <button id="select" class="btn btn-light">Select</button>
+                <button id="transition" class="btn btn-light">Transitions</button>     
+                <button id="dynamic" class="btn btn-light">Dynamic Properties</button>
+            </div>
+        </div>
+        <div class="row text-center">
+            <h4 class="display-4">Scatter Plot</h4>
+            <div id="scatter"></div>
+        </div>
+    </div>
+    <footer class="m-4 text-center">ITP 303 Full-Stack Web Development</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="circles.js"></script>
+    <script src="buttons.js"></script>
+    <script src="graph.js"></script>
+</body>
+</html>
